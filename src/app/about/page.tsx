@@ -1,7 +1,14 @@
+"use client";
+import Image from "next/image";
+import PageTitle from "../components/PageTitle";
+
 export default function About() {
-  return (
-    <div>
-      About page
-    </div>
-  );
+    return (
+        <>
+            <PageTitle
+                title={"About"}
+                subtitle={"A blog for hunting coders by a hunting coder"}
+            ></PageTitle>
+        </>
+    );
 }
