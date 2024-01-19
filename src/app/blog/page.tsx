@@ -1,13 +1,15 @@
-"use client";
-import Image from "next/image";
 import PageTitle from "../components/PageTitle";
-import Blogs from "../components/Blogs/Blogs";
-import { useState } from "react";
+import BlogsList from "../components/Blogs/BlogsList";
 
- 
+async function getBlogs() {
+    const res = await fetch('http://localhost:3000/blog/api', { cache: 'force-cache' })
+    const blogs = await res.json()
 
-export default function Blog() {
-	const [blogs, setBlogs] = useState([])
+    return blogs
+}
+
+export default async function Blog() {
+	const blogs = await getBlogs()
     return (
         <>
             <PageTitle
@@ -15,7 +17,7 @@ export default function Blog() {
                 subtitle={"A blog for hunting coders by a hunting coder"}
             ></PageTitle>
 
-			<Blogs />
+            <BlogsList posts={blogs} />
             
         </>
     );
