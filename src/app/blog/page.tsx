@@ -4,7 +4,8 @@ import Loading from "../components/Loading";
 import { Suspense } from 'react';
 
 async function getBlogs() {
-    const res = await fetch('http://localhost:3000/blog/api', { cache: 'force-cache' })
+    const API_URL = process.env.API_URL;
+    const res = await fetch(`${API_URL}blog/api`, { cache: 'force-cache' })
     const blogs = await res.json()
 
     return blogs
